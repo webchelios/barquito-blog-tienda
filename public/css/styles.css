@@ -1,0 +1,362 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Young+Serif&display=swap');
+*{
+    font-family: 'Josefin Sans', sans-serif;
+}
+h1, h2{
+    font-family: 'Young Serif', serif;
+}
+#nav{
+    background-color: azure;
+}
+nav button{
+    display: inline;
+    border: 0;
+    background-color: unset;
+    line-height: 2.4rem;
+}
+nav a{
+    color: black;
+}
+#logo img {
+    width: 3rem;
+    margin: 0 .4rem;
+}
+
+.status-message{
+    background-color: rgb(29, 124, 168);
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    border-radius: 10rem;
+}
+#status-alert{
+    width: 1.5rem;
+}
+.boton-formulario{
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 6rem;
+    padding: .5rem;
+    text-align: center;
+    border: 0;
+    margin: 2rem 0;
+}
+/*** HOME ****/
+.contenedor-home{
+    margin: 10rem 0;
+
+}
+
+.first-home{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contenido-home {
+    width: 40rem;
+    margin: 4rem 2rem;
+}
+.contenedor-home a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 6rem;
+    padding: .5rem;
+    text-align: center;
+}
+.contenedor-home img{
+    width: 30rem;
+    transform: skew(-2deg);
+}
+
+.resaltar{
+    font-family: 'Young Serif', serif;
+    color: rgb(47, 132, 230);
+}
+
+
+.comunidad{
+    margin: 10rem 0;
+    display: flex;
+    flex-wrap: wrap ;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+.comunidad img{
+    width: 30rem;
+    transform: skew(2deg);
+}
+.comunidad-contenido{
+    margin: 4rem 2rem;
+    width: 30rem;
+}
+
+section{
+    opacity: 0;
+    animation: fadeIn 1s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/*** NOSOTROS ***/
+
+.nosotros-container{
+    margin: 10rem 0;
+}
+
+.nosotros-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.nosotros-contenido {
+    width: 30rem;
+    margin: 1rem;
+}
+.nosotros-img img{
+    width: 20rem;
+    transform: skew(-2deg);
+}
+
+.redes{
+    margin-top: 15rem;
+    display: flex;
+    gap:4rem;
+}
+
+.redes a {
+    display: block;
+    width: 3rem;
+    height: 3rem;
+    text-indent: -10000px;
+    overflow: hidden;
+}
+#facebook{
+    background-image: url('../img/facebook.png');
+    background-size:cover;
+}
+#instagram{
+    background-image: url('../img/instagram.png');
+    background-size:cover;
+}
+#whatsapp{
+    background-image: url('../img/whatsapp.png');
+    background-size:cover;
+}
+
+/*** BLOG ***/
+.contenedor-blog{
+    margin: 10rem 0;
+}
+.contenedor-blog section {
+    margin: 4rem 0;
+}
+.contenedor-blog a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 10rem;
+    padding: .5rem;
+    text-align: center;
+
+}
+.contenedor-entradas{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+article{
+    width: 30rem;
+    border: 1px solid black;
+    padding: 2rem;
+    margin: 1rem;
+    text-align: center;
+}
+article img{
+    width: 10rem;
+    
+}
+article a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 5rem;
+    padding: .5rem;
+    margin: 2rem auto 0 auto;
+}
+
+
+/*** VIEW ***/
+.contenedor-view{
+    margin: 8rem 0;
+
+}
+.contenedor-view a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 6rem;
+    padding: .5rem;
+    text-align: center;
+    margin: 3rem 0;
+}
+.view-img {
+    text-align: center;
+}
+.view-img img {
+    width: 40rem;
+}
+.category{
+    position: absolute;
+    z-index: -1;
+    width: 6rem;
+    height: 2rem;
+    transform: skew(20deg);
+    background-color: rgb(176, 226, 226);
+}
+
+
+/*** ADMIN ***/
+.contenedor-admin{
+    margin: 5rem 0;
+}
+.admin-header{
+    margin-bottom: 3rem;
+}
+.admin-header a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 10rem;
+    padding: .5rem;
+    text-align: center;
+}
+.admin-table img{
+    width: 10rem;
+}
+.botones a{
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 10rem;
+    padding: .5rem;
+    text-align: center;
+    border: 1px solid white;
+}
+.botones button {
+    border: none;
+    background-color: rgb(124, 14, 14);
+    color: white;
+    width: 10rem;
+    padding: .5rem;
+    border: 1px solid white;
+}
+
+
+
+
+
+
+
+footer{
+    background-color: azure;
+    padding: 1rem;
+    text-align: center;
+}
+
+/*** MODAL ***/
+.modal-ventana {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 21, 44, 0.7);
+    text-align: center;
+}
+.modal-ventana a{
+    display: inline-block;
+}
+.contenedor-modal{
+    
+    background-color: #fff;
+    width: 60%;
+    max-width: 400px;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    position: relative;
+}
+
+tr,td,th{
+    border: 1px solid black;
+}
+
+/* STORE */
+
+.container-books{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.container-books h2 {
+    margin-top: 2rem;
+}
+
+.boton-compra{
+    display: block;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    width: 6rem;
+    padding: .5rem;
+    text-align: center;
+    border: 0;
+    margin:0 auto;
+}
+
+.store{
+    margin-top: 10rem;
+    margin-bottom: 2rem;
+}
+
+/*** PANEL ADMIN ***/
+
+.admin-options {
+    width: 40rem;
+    margin: 0 auto;
+}
+
+.admin-options a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: black;
+    color: white;
+    padding: 1rem;
+    margin: 0 2rem;
+}
+
+.user-container {
+    display: flex;
+    flex-wrap: wrap;
+}
