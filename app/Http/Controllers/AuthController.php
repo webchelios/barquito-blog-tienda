@@ -27,13 +27,15 @@ class AuthController extends Controller
             return redirect()
                 ->route('auth.form.login')
                 ->with('status.message', 'Las credenciales ingresadas son incorrectas')
+                ->with('status.type', 'error')
                 // Le envio los datos al formulario de inicio de sesión
                 ->withInput(); // Se asegura de que tengamos acceso a los datos viejos con la función old
         } 
 
         return redirect()
             ->route('blog')
-            ->with('status.message', '¡Bienvenido ' . auth()->user()->name . '!');
+            ->with('status.message', '¡Bienvenido ' . auth()->user()->name . '!')
+            ->with('status.type', 'success');
     }
 
     public function processRegister(Request $request) {
@@ -49,22 +51,26 @@ class AuthController extends Controller
             $data['password'] = $hashedPassword;
             $data['role'] = 'normal';
 
-            User::create($data);
+            $user = User::create($data);
 
+            // Logueo al usuario al registrarse exitosamente
+            Auth::login($user);
 
             // Redirecciono al usuario a otro lado
             return redirect(
             )
                 ->route('home')
             // Flasheo una variable que imprima el resultado del formulario
-                ->with('status.message', "El usuario: '" . e($request->input('email')) . "' se registró exitosamente");
-
+                ->with('status.message', "El usuario: '" . e($request->input('email')) . "' se registró exitosamente")
+                ->with('status.type', 'success');
         } catch (\Exception $e){
             // Redirecciono al usuario a otro lado
             return redirect()
-                    ->route('home')
+                    ->back()
                 // Flasheo una variable que imprima el resultado del formulario
-                    ->with('status.message', "El usuario: '" . e($request->input('email')) . "' no pudo ser registrado por un error");
+                    ->with('status.message', "El usuario no pudo ser registrado por un error: " . $e->getMessage())
+                    ->with('status.type', 'error')
+                    ->withInput();
         }
     }
 
@@ -77,6 +83,7 @@ class AuthController extends Controller
 
         return redirect()
             ->route('auth.form.login')
-            ->with('status.message', 'Sesión cerrada exitosamente');
+            ->with('status.message', 'Sesión cerrada exitosamente')
+            ->with('status.type', 'success');
     }
 }

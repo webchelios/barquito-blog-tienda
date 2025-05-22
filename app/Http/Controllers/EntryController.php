@@ -101,14 +101,17 @@ class EntryController extends Controller
             )
                 ->route('blog')
             // Flasheo una variable que imprima el resultado del formulario
-                ->with('status.message', "La entrada: '" . e($request->input('title')) . "' se publicó exitosamente");
+                ->with('status.message', "La entrada: '" . e($request->input('title')) . "' se publicó exitosamente")
+                ->with('status.type', 'success');
 
         } catch (\Exception $e){
             // Redirecciono al usuario a otro lado
             return redirect()
-                    ->route('blog')
+                    ->back()
                 // Flasheo una variable que imprima el resultado del formulario
-                    ->with('status.message', "La entrada: '" . e($request->input('title')) . "' no pudo ser publicada por un error");
+                    ->with('status.message', "La entrada no pudo ser publicada por un error: " . $e->getMessage())
+                    ->with('status.type', 'error')
+                    ->withInput();
         }
     }
     /**
@@ -139,14 +142,16 @@ class EntryController extends Controller
 
             return redirect()
                 ->route('admin.entries')
-                ->with('status.message', "La entrada '" . e($entry->title) . "' fue eliminada exitosamente");
+                ->with('status.message', "La entrada '" . e($entry->title) . "' fue eliminada exitosamente")
+                ->with('status.type', 'success');
     
         } catch (\Exception $e) {
            
 
             return redirect()
                 ->back()
-                ->with('status.message', "Error: La entrada '" . e($entry->title) . "' no pudo ser eliminada");
+                ->with('status.message', "Error: La entrada '" . e($entry->title) . "' no pudo ser eliminada " .  $e->getMessage())
+                >with('status.type', 'error');
         }
     }
 
@@ -241,12 +246,14 @@ class EntryController extends Controller
 
             return redirect()
                 ->route('blog')
-                ->with('status.message', "La entrada '" . e($entry->title) . "' se ha editado existosamente");
+                ->with('status.message', "La entrada '" . e($entry->title) . "' se ha editado existosamente")
+                ->with('status.type', 'success');
 
         } catch (\Exception $e){
             return redirect()
             ->route('admin')
-            ->with('status.message', "La entrada '" . e($entry->title) . "' no pudo ser editada por un error");
+            ->with('status.message', "La entrada '" . e($entry->title) . "' no pudo ser editada por un error " .  $e->getMessage())
+            ->with('status.type', 'error');
         }
     }
 

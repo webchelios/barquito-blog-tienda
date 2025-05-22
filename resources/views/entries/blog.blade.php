@@ -9,11 +9,18 @@
 
 
     <section>
-    <h1>Origami Blog</h1>
-    <p>Explorá y publicá entradas</p>
-    <div>
-        <a href=" {{ route('blog.form.create') }}">Publicar entrada</a>
-    </div>
+        <div class="contenedor-flor">
+        <div class="flor">
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+            <div class="petalo"></div>
+        </div>
+        </div>
+        <h1>Origami Blog</h1>
+        <p>Explorá y publicá entradas</p>
+        <div>
+            <a href=" {{ route('blog.form.create') }}">Publicar entrada</a>
+        </div>
     </section>
 
     <div class="contenedor-entradas">

@@ -57,7 +57,7 @@
     <main class="container py-3">
         <?PHP // Flashea el resultado de la publicación de entrada ?>
         @if (\Session::has('status.message'))
-        <p class="status-message"> <img src="img/exclamacion.png" alt="Una imagen de alerta" id="status-alert"> {!! \Session::get('status.message') !!}</p>
+        <p class="status-message"> <img src="{{url('img/exclamacion.png')}}" alt="Una imagen de alerta" id="status-alert"> {!! \Session::get('status.message') !!}</p>
         @endif
     @yield('content')
     </main>

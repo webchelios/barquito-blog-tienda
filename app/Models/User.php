@@ -79,14 +79,16 @@ class User extends Authenticatable
 
     public static $rules = [
         'name' => 'required|min:3',
-        'email' => 'required',
+        'email' => 'required|email|unique:users',
         'password' => 'required|min:3',
     ];
 
     public static $errorMessages = [
         'name.required' => 'El usuario debe tener un nombre',
         'name.min' => 'El nombre debe contener más de dos caracteres',
+        'email' => "El email debe ser válido",
         'email.required' => 'Es necesario registrarse con una cuenta de email',
+        'email.unique' => 'La dirección de email ingresada ya existe',
         'password.required' => 'Es necesario crear una contraseña',
         'password.min' => 'La contraseña debe tener más de dos caracteres',
     ];

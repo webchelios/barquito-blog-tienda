@@ -36,16 +36,29 @@ nav button:hover {
     width: 3rem;
     margin: 0 .4rem;
 }
-
 .status-message{
+    display: flex;
+    justify-content: center;
+    gap: .5rem;
     background-color: rgb(29, 124, 168);
     padding: 1rem;
     text-align: center;
     color: white;
-    border-radius: 10rem;
+    border-radius: 1rem;
+    height: 3.5rem;
+}
+.status-message img {
+    width: 1rem;
+    height: 1.5rem;
 }
 #status-alert{
     width: 1.5rem;
+}
+.status-error {
+    background-color: rgb(221, 44, 44);
+}
+.status-success {
+    background-color: rgb(73, 141, 34);
 }
 .boton-formulario{
     display: block;
@@ -57,6 +70,9 @@ nav button:hover {
     text-align: center;
     border: 0;
     margin: 2rem 0;
+}
+.boton-formulario:hover {
+    background-color: rgb(53, 53, 53);
 }
 /*** HOME ****/
 .contenedor-home{
@@ -82,6 +98,9 @@ nav button:hover {
     width: 6rem;
     padding: .5rem;
     text-align: center;
+}
+.contenedor-home a:hover {
+    background-color: rgb(53, 53, 53);
 }
 .contenedor-home img{
     width: 30rem;
@@ -173,6 +192,86 @@ section{
 }
 
 /*** BLOG ***/
+
+.flor {
+    position: relative;
+}
+
+.petalo {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    top: 0;
+    left: 0;
+    background-color: rgb(208, 255, 255);
+    border-radius: 100% 0 100% 0;
+    transform-origin: center center;
+    z-index: -1000;
+}
+
+.petalo:nth-child(1) {
+    transform: rotate(0deg);
+    animation: entrar1 2s ease-out;
+}
+
+.petalo:nth-child(2) {
+    transform: rotate(120deg);
+    animation: entrar2 2s ease-out;
+}
+
+.petalo:nth-child(3) {
+    transform: rotate(240deg);
+    animation: entrar3 2s ease-out;
+}
+
+@keyframes entrar1 {
+    0% {
+        opacity: 0;
+        top: 50rem;
+        left: 50rem;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes entrar2 {
+    0% {
+        opacity: 0;
+        top: 50rem;
+        left: -50rem;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+}
+
+@keyframes entrar3 {
+    0% {
+        opacity: 0;
+        top: -50rem;
+        left: 25rem;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+        left: 0;
+    }
+}
+
 .contenedor-blog{
     margin: 10rem 0;
 }
@@ -187,7 +286,9 @@ section{
     width: 10rem;
     padding: .5rem;
     text-align: center;
-
+}
+.contenedor-blog a:hover {
+    background-color: rgb(53, 53, 53);
 }
 .contenedor-entradas{
     display: flex;
@@ -196,10 +297,14 @@ section{
 }
 article{
     width: 30rem;
-    border: 1px solid black;
+    border: 1px solid rgb(214, 214, 214);
     padding: 2rem;
     margin: 1rem;
     text-align: center;
+}
+article:hover {
+    border: 1px solid black;
+    transition: border 1s linear;
 }
 article img{
     width: 10rem;
@@ -264,6 +369,9 @@ article a {
     text-align: center;
     margin: 3rem 0;
 }
+.contenedor-view a:hover {
+    background-color: rgb(53, 53, 53);
+}
 .view-img {
     text-align: center;
 }
@@ -306,6 +414,9 @@ article a {
     padding: .5rem;
     text-align: center;
 }
+.admin-header a:hover {
+    background-color: rgb(53, 53, 53);
+}
 .admin-table img{
     width: 10rem;
 }
@@ -318,6 +429,9 @@ article a {
     padding: .5rem;
     text-align: center;
     border: 1px solid white;
+}
+.botones a:hover {
+     background-color: rgb(53, 53, 53);
 }
 .botones button {
     border: none;
@@ -391,7 +505,9 @@ tr,td,th{
     border: 0;
     margin:0 auto;
 }
-
+.boton-compra:hover {
+     background-color: rgb(53, 53, 53);
+}
 .store{
     margin-top: 10rem;
     margin-bottom: 2rem;
@@ -411,6 +527,9 @@ tr,td,th{
     color: white;
     padding: 1rem;
     margin: 0 2rem;
+}
+.admin-options a:hover {
+     background-color: rgb(53, 53, 53);
 }
 
 .user-container {

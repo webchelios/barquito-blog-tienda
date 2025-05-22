@@ -59,9 +59,9 @@ class Entry extends Model
 
     public static $errorMessages = [
         'title.required' => 'El título no debe estar vacío',
-        'title.min' => 'El título debe ser más largo',
+        'title.min' => 'El título debe ser más largo (mínimo 4 caracteres)',
         'text.required' => 'La entrada debe contener texto',
-        'text.min' => 'El texto debe ser más extenso',
+        'text.min' => 'El texto debe ser más extenso (mínimo 10 caracteres)',
         // 'author.required' => 'El autor no puede ser anónimo',
         // 'author.min' => 'El nombre de autor debe ser más largo',
         'category_id.required' => 'La entrada debe estar en alguna categoría',
