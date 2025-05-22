@@ -1,12 +1,9 @@
 document.querySelectorAll('.texto-blog').forEach(textoBlog => {
-    let texto = textoBlog.textContent;
-    let textoRecortado = texto;
-    
-    if(texto.length > 200){
-        textoRecortado = texto.substring(0, 200) + "...";
-    }
-    
-    textoBlog.textContent = textoRecortado;
+    // Expresión regular: Uno o mas espacios de cualquier tipo
+    const palabras = textoBlog.textContent.trim().split(/\s+/);
+    const palabrasRecortadas = palabras.slice(0, 20);
+  
+    textoBlog.textContent = palabrasRecortadas.join(' ') + (palabras.length > 20 ? '...' : '');
 });
 
 document.querySelectorAll('.eliminar-form').forEach(form => {
@@ -24,8 +21,5 @@ document.querySelectorAll('.eliminar-form').forEach(form => {
         cancelarBoton.addEventListener('click', e =>{
             modalVentana.style.display = "none";
         })
-
-        
     })
-
 })

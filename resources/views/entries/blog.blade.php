@@ -10,7 +10,7 @@
 
     <section>
     <h1>Origami Blog</h1>
-    <p>Explora y publica entradas</p>
+    <p>Explorá y publicá entradas</p>
     <div>
         <a href=" {{ route('blog.form.create') }}">Publicar entrada</a>
     </div>
@@ -30,11 +30,11 @@
             <img src="{{ url('img/blog-img.png') }}">
         @endif
         <?PHP // Hay una relación creada para category, va a buscar el registro relacionado e imprimirme la categoría que necesito (modelo category) ?>
-        <p>{{ $entry->category->name }}</p>
+        <p class="categoria-item">{{ $entry->category->name }}</p>
 
         @if($entry->tags->isNotEmpty())
             @foreach ($entry->tags as $tag)
-                <p>{{$tag->name}}</p>
+                <p class="tag-item">{{$tag->name}}</p>
             @endforeach
         @else
             <span>No tiene tags</span>

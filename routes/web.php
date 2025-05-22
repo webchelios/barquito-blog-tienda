@@ -18,17 +18,17 @@ use PhpParser\Node\Expr\FuncCall;
 //Quiero que haga un get a la raiz de public para retornar la vista "home.blade". Para eso utilizo el verbo GET
 //Por el patrón MVC debo pasar un array de dos posiciones para indicar el controller(clase que sigue el patron MVC) y el método view() que retorna la vista 
 Route::get('/', [\App\Http\Controllers\HomeController::class, 'index'])
-->name('home');
+    ->name('home');
 
 Route::get('/blog', [\App\Http\Controllers\EntryController::class, 'blog'])
-->name('blog');
+    ->name('blog');
 
 // Rutas de Autenticación
 Route::get('/registrarse', [\App\Http\Controllers\AuthController::class, 'formRegister'])
     ->name('auth.form.register');
 
 Route::post('/registrarse', [\App\Http\Controllers\AuthController::class, 'processRegister'])
-->name('auth.process.register');
+    ->name('auth.process.register');
 
 Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'formLogin'])
     ->name('auth.form.login');
@@ -82,16 +82,16 @@ Route::get('/nosotros', [\App\Http\Controllers\ProductController::class, 'we'])
     ->name('we');
 
 Route::get('/administrador', [\App\Http\Controllers\AdminController::class, 'index'])
-->name('admin')
-->middleware('auth');
+    ->name('admin')
+    ->middleware('auth');
 
 Route::get('/administrador/entradas', [\App\Http\Controllers\AdminEntriesController::class, 'index'])
-->name('admin.entries')
-->middleware('auth');
+    ->name('admin.entries')
+    ->middleware('auth');
 
 Route::get('/administrador/usuarios', [\App\Http\Controllers\AdminUserController::class, 'index'])
-->name('admin.users')
-->middleware('auth');
+    ->name('admin.users')
+    ->middleware('auth');
 
 Route::get('/tienda', [\App\Http\Controllers\BookController::class, 'store'])
     ->name('store.view');

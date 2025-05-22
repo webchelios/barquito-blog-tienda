@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Collection;
 @section('title', 'Publicar nueva entrada')
 
 @section('content')
-    <h1> Publicar nueva entrada </h1>
+    <h1 class="mt-4 mb-4"> Publicar nueva entrada </h1>
 
     <form action="{{ url('/blog/nueva') }}" method="post" enctype="multipart/form-data">
         <!--Agrego el token-->
@@ -37,7 +37,7 @@ use Illuminate\Database\Eloquent\Collection;
             @enderror
         </div>
 
-        <div>
+        <div class="mt-2">
             <label for="text">Texto</label>
             <textarea
                 name="text"
@@ -57,30 +57,9 @@ use Illuminate\Database\Eloquent\Collection;
                     >{{ $message }}</p></div>
             @enderror
         </div>
-<!--
-        <div>
-            <label for="author">Autor</label>
-            <input
-                type="text"
-                id="author"
-                name="author"
-                class="form-control @error('author') is-invalid @enderror"
-                @error('author')
-                    aria-describedby="author-title"
-                    aria-invalid="true"
-                @enderror
-                value="{{old('author')}}"
-            >
-            @error('author')
-                <div><p
-                        id="error-author"
-                        style="color: red"
-                    >{{ $message }}</p></div>
-            @enderror
-        </div>
-    -->
-        <div>
-            <label for="category_id">Categoria</label>
+
+        <div class="mt-2">
+            <label for="category_id">Categoría</label>
             <select
                 id="category_id"
                 name="category_id"
@@ -108,7 +87,7 @@ use Illuminate\Database\Eloquent\Collection;
             @enderror
         </div>
 
-        <div>
+        <div class="mt-2">
             <label for="cover">Carátula</label>
             <input
                 type="file"
@@ -119,8 +98,8 @@ use Illuminate\Database\Eloquent\Collection;
     
         </div>
 
-        <div>   
-            <label for="cover_description" class="form-label">Descripción de la carátula</label>
+        <div class="mt-2">   
+            <label for="cover_description" >Descripción de la carátula</label>
             <input
                 type="text"
                 name="cover_description"
@@ -130,7 +109,7 @@ use Illuminate\Database\Eloquent\Collection;
             >
         </div>
 
-        <fieldset>
+        <fieldset class="mt-2">
             <legend>Tags</legend>
             @foreach ($tags as $tag)
                 <label>

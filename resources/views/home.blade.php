@@ -6,7 +6,7 @@
 <div class="contenedor-home">
     <section class="first-home">
         <div class="contenido-home">
-            <h2>Encontrá todo lo que buscas acerca del <span class="resaltar">origami</span></h2>
+            <h2>Encontrá todo lo que buscás acerca del <span class="resaltar">origami</span></h2>
             <p>Hacer origami ahora es mucho más fácil con nuestro blog. Navegá a través de nuestra colección de origamis, descubrí tutoriales y patrones, y sumergite en las historias detrás de cada creación. ¡El viaje comienza acá, donde el papel cobra vida y la creatividad no tiene límites!</p>
             <a href="{{ route('blog') }}">Ir al blog</a>
         </div>

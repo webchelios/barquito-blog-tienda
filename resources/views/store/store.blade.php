@@ -13,7 +13,7 @@
             <div><img src="{{ $book->cover }}" alt="{{$book->cover_description}}"></div>
             <h2>{{ $book->title }}</h2>
             <p>{{ $book->description }}</p>
-            <p>${{ $book->price }}</p>
+            <p class="display-4">${{ $book->price }}</p>
 
             <button class="boton-compra">Comprar</button>
         </article>

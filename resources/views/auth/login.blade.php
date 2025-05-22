@@ -3,16 +3,16 @@
 @section('title', 'Iniciar Sesión')
 
 @section('content')
-<h1>Ingresar a tu cuenta</h1>
+<h1 class="auth-titulo">Ingresar a tu cuenta</h1>
 
 <form action="{{ route('auth.process.login') }}" method="POST">
     @csrf
-    <div>
-        <label for="email">Tu email</label>
-        <input type="text" name="email" id="email" value="{{ old('email') }}" class="form-control">
+    <div class="mt-2">
+        <label for="email">Email</label>
+        <input type="text" name="email" id="email" value="{{ old('email') }}" class="form-control" placeholder="Juan@example.com">
     </div>
-    <div>
-        <label for="password">Tu contraseña</label>
+    <div class="mt-2">
+        <label for="password">Contraseña</label>
         <input type="password" name="password" id="password" class="form-control">
     </div>
     <button type="submit" class="boton-formulario">Ingresar</button>
