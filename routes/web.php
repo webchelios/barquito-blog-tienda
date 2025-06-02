@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Método de controller
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/quienes-somos', function () {
+    return view('about');
 });
