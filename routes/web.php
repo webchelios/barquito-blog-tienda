@@ -18,10 +18,7 @@ use Illuminate\Support\Facades\Route;
 // ( ::class transforma FQN a string y me da autocompletado )
 Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ]);
 
-Route::get('/quienes-somos', function () {
-    return view('about');
-});
+Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'about' ]);
 
-Route::get('/blog/listado', function () {
-    return view('blog/index');
-});
+Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'blog' ]);
+

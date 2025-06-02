@@ -10,7 +10,7 @@
     <nav>
         <a href="{{ url('/') }}">Inicio</a>
         <a href="{{ url('/quienes-somos') }}">Quienes somos</a>
-        <a href="{{ url('/blog/listado') }}">Blog</a>
+        <a href="{{ url('/blog/entradas') }}">Blog</a>
     </nav>
     <h1 class="card-body">Blog</h1>
     <footer>Marcelo Anavia 2025</footer>
