@@ -1,4 +1,4 @@
 @extends('layouts.main')
 @section('main-content')
-<h1>Entradas</h1>
+<h1>ADMINISTRACIÓN</h1>
 @endsection

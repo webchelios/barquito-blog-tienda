@@ -22,3 +22,4 @@ Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'ab
 
 Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'index' ]);
 
+Route::get('/admin/entradas', [\App\Http\Controllers\AdminEntryController::class, 'index' ]);
