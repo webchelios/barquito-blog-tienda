@@ -18,7 +18,8 @@ return new class extends Migration
             $table->string('title', 100);
             $table->string('category', 100);
             $table->text('content');
-            $table->date('creation_date');
+            $table->string('author', 100);
+            $table->string('cover', 100)->nullable();
         });
     }
 
