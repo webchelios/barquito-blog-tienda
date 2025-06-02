@@ -20,5 +20,5 @@ Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ]);
 
 Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'about' ]);
 
-Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'blog' ]);
+Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'index' ]);
 
