@@ -13,11 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Método de controller
-Route::get('/', function () {
-    return view('welcome');
-});
+// controllers como métodos de rutas
+// callable => [ nombre completo "FQN" , Nombre del método del controller ]
+// ( ::class transforma FQN a string y me da autocompletado )
+Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ]);
 
 Route::get('/quienes-somos', function () {
     return view('about');
+});
+
+Route::get('/blog/listado', function () {
+    return view('blog/index');
 });

@@ -11,7 +11,7 @@
         <a href="">Inicio</a>
         <a href="">Quienes somos</a>
     </nav>
-    <h1 class="card-body">Bienvenidos</h1>
+    <h1 class="card-body">Quienes somos</h1>
     <footer>Marcelo Anavia 2025</footer>
 </body>
 </html>
