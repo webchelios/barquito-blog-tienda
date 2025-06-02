@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de administración de Barquito</title>
-    <link rel="stylesheet" href="{{ url('css/styles.css') }}">
+    <title>@yield('admin-title') | Barquito</title>
+    <link rel="stylesheet" href="{{ url('css/admin.css') }}">
 </head>
 <body>
     <nav>

@@ -4,6 +4,90 @@
     box-sizing: border-box;
 }
 
+/* CARGAR FUENTES GUARDADAS EN DIRECTORIO FONTS */
+
+/* Fuente EB Garamond */
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'EB Garamond';
+    src: url('/fonts/EBGaramond-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: bold;
+}
+
+/* Fuente Inter (24pt) */
+@font-face {
+    font-family: 'Inter 24pt';
+    src: url('/fonts/Inter_24pt-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter 24pt';
+    src: url('/fonts/Inter_24pt-Italic.ttf') format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Inter 24pt';
+    src: url('/fonts/Inter_24pt-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: bold;
+}
+
+@font-face {
+    font-family: 'Inter 24pt';
+    src: url('/fonts/Inter_24pt-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+/* ESTABLECER VARIABLES */
+
+:root {
+    --primary-color: rgb(105, 150, 233);
+    --secondary-color: rgb(243, 139, 170);
+    --font-primary: 'Inter 24pt', sans-serif;
+    --font-secondary: 'EB Garamond', serif;
+}
+
+/* DEFINIR FUENTES A UTILIZAR */
+body {
+    font-family: var( --font-primary );
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: var( --font-secondary );
+    font-weight: 700;
+}
+
+.italic-title {
+    font-family: var( --font-secondary );
+    font-style: italic;
+}
+
+.thin-text {
+    font-family: var( --font-primary );
+    font-weight: 100;
+}
+
+/* FIJAR FOOTER */
+
 body {
     display: flex;
     flex-direction: column;
@@ -12,4 +96,47 @@ body {
 
 footer {
     margin-top: auto;
+}
+
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.logo img {
+    width: 10rem;
+}
+
+.navbar-list {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+}
+
+.navbar-list li a {
+    color: black;
+    text-decoration: none;
+    position: relative;
+}
+
+.navbar-list li a:hover {
+    color: var(--primary-color);
+}
+
+.navbar-list li a::after {
+    content: '';
+    width: 0%;
+    height: 2px; 
+    background: var(--secondary-color);
+    position: absolute;
+    bottom: -0.4rem;
+    left: 0;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-list li a:hover::after {
+    width: 100%;
 }
