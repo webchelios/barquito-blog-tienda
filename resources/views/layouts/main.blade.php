@@ -15,17 +15,24 @@
 
         <ul class="navbar-list">
             <li><a href="{{ url('/') }}">Inicio</a></li>
-            <li><a href="{{ url('/quienes-somos') }}">Quienes somos</a></li>
             <li><a href="{{ url('/blog/entradas') }}">Blog</a></li>
+            <li><a href="{{ url('/quienes-somos') }}">Quienes somos</a></li>
             <li><a href="{{ url('/admin') }}">Administrar</a></li>
         </ul>
 
+        <div class="menu-toggle">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
     </nav>
-    <main>
+    <main class="main-content">
 
             @yield('main-content')
  
     </main>
-    <footer>Marcelo Anavia 2025</footer>
+    <footer>Marcelo Anavia 23.2 | DWN4BV</footer>
+    <script src="js/main.js"></script>
 </body>
 </html>

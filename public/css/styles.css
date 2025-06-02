@@ -9,21 +9,21 @@
 /* Fuente EB Garamond */
 @font-face {
     font-family: 'EB Garamond';
-    src: url('/fonts/EBGaramond-Regular.ttf') format('truetype');
+    src: url('../fonts/EBGaramond-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'EB Garamond';
-    src: url('/fonts/EBGaramond-Italic.ttf') format('truetype');
+    src: url('../fonts/EBGaramond-Italic.ttf') format('truetype');
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'EB Garamond';
-    src: url('/fonts/EBGaramond-Bold.ttf') format('truetype');
+    src: url('../fonts/EBGaramond-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: bold;
 }
@@ -31,29 +31,38 @@
 /* Fuente Inter (24pt) */
 @font-face {
     font-family: 'Inter 24pt';
-    src: url('/fonts/Inter_24pt-Regular.ttf') format('truetype');
+    src: url('../fonts/Inter_24pt-Regular.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Inter 24pt';
-    src: url('/fonts/Inter_24pt-Italic.ttf') format('truetype');
+    src: url('../fonts/Inter_24pt-Italic.ttf') format('truetype');
     font-weight: 400;
     font-style: italic;
 }
 
 @font-face {
     font-family: 'Inter 24pt';
-    src: url('/fonts/Inter_24pt-Bold.ttf') format('truetype');
+    src: url('../fonts/Inter_24pt-Bold.ttf') format('truetype');
     font-weight: 700;
     font-style: bold;
 }
 
 @font-face {
     font-family: 'Inter 24pt';
-    src: url('/fonts/Inter_24pt-Thin.ttf') format('truetype');
+    src: url('../fonts/Inter_24pt-Thin.ttf') format('truetype');
     font-weight: 100;
+    font-style: normal;
+}
+
+/* Fuente Young Serif */
+
+@font-face {
+    font-family: 'Young Serif';
+    src: url('../fonts/YoungSerif-Regular.ttf') format('truetype');
+    font-weight: 400;
     font-style: normal;
 }
 
@@ -62,8 +71,10 @@
 :root {
     --primary-color: rgb(105, 150, 233);
     --secondary-color: rgb(243, 139, 170);
+    --tertiary-color: #f7f4d2;
     --font-primary: 'Inter 24pt', sans-serif;
     --font-secondary: 'EB Garamond', serif;
+    --font-tertiary: 'Young Serif', serif;
 }
 
 /* DEFINIR FUENTES A UTILIZAR */
@@ -72,8 +83,8 @@ body {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: var( --font-secondary );
-    font-weight: 700;
+    font-family: var( --font-tertiary );
+    font-weight: 400;
 }
 
 .italic-title {
@@ -96,6 +107,14 @@ body {
 
 footer {
     margin-top: auto;
+    background-color: var(--tertiary-color);
+}
+
+/* FOOTER */
+
+footer {
+    padding: 1rem;
+    text-align: center;
 }
 
 /* NAVBAR */
@@ -103,17 +122,19 @@ footer {
 .navbar {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1rem;
 }
 
 .logo img {
-    width: 10rem;
+    width: 9rem;
 }
 
 .navbar-list {
     display: flex;
     gap: 2rem;
     list-style: none;
+    margin-right: 1rem;
 }
 
 .navbar-list li a {
@@ -139,4 +160,218 @@ footer {
 
 .navbar-list li a:hover::after {
     width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+}
+
+.menu-toggle div {
+    width: 2.2rem;
+    height: .2rem;
+    background-color: black;
+    margin: .2rem;
+}
+
+@media screen and ( max-width: 765px ) {
+    .navbar-list {
+        display: none;
+    }
+
+    .navbar-list-active {
+        display: flex;
+        position: absolute;
+        flex-direction: column;
+        text-align: right;
+        top: 0;
+        right: 0;
+        margin-top: 4rem;
+        background-color: var(--secondary-color);
+        border-radius: 5rem 0;
+        padding: 2rem;
+    }
+
+    .navbar-list li a:hover {
+        color: var(--primary-color);
+    }
+
+    .navbar-list li a::after {
+        background: var(--primary-color);
+    }
+
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+    }
+}
+
+/* MAIN CONTENT */
+.main-content {
+    padding: 1rem;
+    width: 100%;
+    max-width: 1920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* HOME SECTION */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6rem;
+        animation: appear 1s ease;
+}
+
+@keyframes appear {
+    0% {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.home-title {
+    text-align: center;
+}
+
+.home-title h1 {
+    margin-top: 4rem;
+
+}
+
+.home-flower {
+    position: relative;
+    top: -5rem;
+    width: 20rem;
+}
+
+.petal {
+    width: 9rem;
+    height: 9rem;
+    background-color: rgba(235, 158, 224, 0.452);
+    position: absolute;
+    border-radius: 100% 0;
+    z-index: -1000;
+}
+
+.petal:nth-child(1) {
+    transform: rotate(90deg);
+    animation: entry1 1s ease;
+}
+
+
+.petal:nth-child(2) {
+    transform: rotate(135deg);
+    left: calc( 50% - 4.5rem);
+    animation: entry2 1s ease;
+}
+
+
+.petal:nth-child(3) {
+    right: 0;
+    animation: entry3 1s ease;
+}
+
+@keyframes entry1 {
+    0% {
+        opacity: 0;
+        left: -50rem;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        left: 0;
+    }
+}
+
+@keyframes entry2 {
+    0% {
+        opacity: 0;
+
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+
+    }
+}
+
+@keyframes entry3 {
+    0% {
+        opacity: 0;
+        right: -50rem;
+    }
+    60% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+        right: 0;
+    }
+}
+
+.home-card {
+    padding: 1rem;
+    max-width: 80rem;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.home-card img {
+    width: 30rem;
+    transform: skewX(-2deg);
+}
+
+.home-card:nth-child(3) img {
+    transform: skewX(2deg);
+}
+
+.home-card h2 {
+    font-size: 2rem;
+    line-height: 2.2rem;
+    margin-bottom: 1rem;
+}
+
+.home-card p {
+    line-height: 1.6rem;
+}
+
+.call-to-action {
+    display: block;
+    margin-top: 1.2rem;
+    padding: .8rem 1.6rem;
+    width: fit-content;
+    color: white;
+    border-radius: 1.5rem;
+    text-decoration: none;
+    background-color: var(--primary-color);
+    transition: background-color .3s ease;
+}
+
+.call-to-action:hover {
+    background-color: var(--secondary-color);
+}
+
+.text-colorful {
+    color: var(--primary-color);
+}
+
+@media screen and (max-width: 1350px ) {
+    .home-card {
+        flex-direction: column;
+    }
+    .home-card:nth-child(3) {
+        flex-direction: column-reverse;
+    }
+    .home-card img {
+        max-width: 100%;
+    }
 }
