@@ -21,9 +21,9 @@ Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ]);
 Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'about' ]);
 
 Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'index' ]);
-Route::get('/blog/entradas/{id}', [ \App\Http\Controllers\EntryController::class , 'view' ]);
+Route::get('/blog/entradas/{id}', [ \App\Http\Controllers\EntryController::class , 'view' ])->whereNumber('id');
 Route::get('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createForm' ]);
-
+Route::post('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createProcess' ]);
 
 Route::get('/admin', function() {
     return view('admin.index');

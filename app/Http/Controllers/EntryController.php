@@ -22,9 +22,19 @@ class EntryController extends Controller
     // atrapar el id del parámetro asociado a la ruta como parametro de la función
     // (debe llamarse igual al parametro)
     public function view( int $id ) {       
-        // busca el registro de la tabla por su PK
+        // busca el registro de la tabla por su PK y muestro un 404 si no lo encuentra
         return view('blog.view', [
-            'entry' => Entry::find($id),
+            'entry' => Entry::findOrFail($id),
         ]);
+    }
+
+    public function createForm() {
+        return view('blog.create');
+    }
+
+    // recibir datos del form por POST => usar clase Request como argumento tipado
+    public function createProcess(Request $request) {
+        dd($request);
+
     }
 }

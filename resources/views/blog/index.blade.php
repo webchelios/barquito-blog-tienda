@@ -5,7 +5,9 @@
 @section('main-content')
 <section class="blog-container">
     <h1>Entradas</h1>
-    <div><a href="{{ url('/blog/entradas/nueva') }}">Crear una</a></div>
+    <div>
+        <a href="{{ url('/blog/entradas/nueva') }}">Crear una</a>
+    </div>
     <div class="card-container"> 
 
         @foreach ( $entries as $entry )
@@ -14,7 +16,9 @@
             <p>Por: {{ $entry->author }}</p>
             <p><b>{{ $entry->category }}</b></p>
             <p>{{ $entry->content }}</p>
-            <a href="{{ url('/blog/entradas/' . $entry->entry_id) }}">Ver bien</a>
+            <div>
+                <a href="{{ url('/blog/entradas/' . $entry->entry_id) }}">Ver bien</a>
+            </div>
         </article>
         @endforeach
 
