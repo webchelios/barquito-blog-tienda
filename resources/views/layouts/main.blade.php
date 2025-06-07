@@ -14,10 +14,10 @@
         </a>
 
         <ul class="navbar-list">
-            <li><a href="{{ url('/') }}">Inicio</a></li>
-            <li><a href="{{ url('/blog/entradas') }}">Blog</a></li>
-            <li><a href="{{ url('/quienes-somos') }}">Quienes somos</a></li>
-            <li><a href="{{ url('/admin') }}">Administrar</a></li>
+            <li><a href="{{ url('/') }}" class="navbar-item">Inicio</a></li>
+            <li><a href="{{ url('/blog/entradas') }}" class="navbar-item">Blog</a></li>
+            <li><a href="{{ url('/quienes-somos') }}" class="navbar-item">Quienes somos</a></li>
+            <li><a href="{{ url('/admin') }}" class="navbar-item">Administrar</a></li>
         </ul>
 
         <div class="menu-toggle">
@@ -33,6 +33,6 @@
  
     </main>
     <footer>Marcelo Anavia 23.2 | DWN4BV</footer>
-    <script src="js/main.js"></script>
+    <script src="{{ url('js/main.js') }}"></script>
 </body>
 </html>

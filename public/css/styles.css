@@ -127,7 +127,7 @@ footer {
 }
 
 .logo img {
-    width: 9rem;
+    width: 8rem;
 }
 
 .navbar-list {
@@ -137,10 +137,14 @@ footer {
     margin-right: 1rem;
 }
 
-.navbar-list li a {
+.navbar-item {
     color: black;
     text-decoration: none;
     position: relative;
+}
+
+.navbar-item-active {
+    color: var(--primary-color);
 }
 
 .navbar-list li a:hover {
@@ -167,8 +171,8 @@ footer {
 }
 
 .menu-toggle div {
-    width: 2.2rem;
-    height: .2rem;
+    width: 1.7rem;
+    height: 3px;
     background-color: black;
     margin: .2rem;
 }
@@ -188,7 +192,11 @@ footer {
         margin-top: 4rem;
         background-color: var(--secondary-color);
         border-radius: 5rem 0;
-        padding: 2rem;
+        padding-top: 2rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-bottom: 2.5rem;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.459);
     }
 
     .navbar-list li a:hover {
@@ -202,6 +210,10 @@ footer {
     .menu-toggle {
         display: block;
         cursor: pointer;
+    }
+
+    .menu-toggle-active div {
+        background-color: var(--secondary-color);
     }
 }
 
@@ -239,6 +251,7 @@ footer {
 
 .home-title h1 {
     margin-top: 4rem;
+    color: var(--primary-color);
 
 }
 
@@ -352,26 +365,59 @@ footer {
     color: white;
     border-radius: 1.5rem;
     text-decoration: none;
-    background-color: var(--primary-color);
+    background-color: var( --primary-color );
     transition: background-color .3s ease;
 }
 
 .call-to-action:hover {
-    background-color: var(--secondary-color);
+    background-color: var( --secondary-color );
 }
 
 .text-colorful {
-    color: var(--primary-color);
+    color: var( --primary-color );
 }
 
-@media screen and (max-width: 1350px ) {
+@media screen and ( max-width: 1350px ) {
     .home-card {
         flex-direction: column;
     }
+
     .home-card:nth-child(3) {
         flex-direction: column-reverse;
+        text-align: right;
     }
+
+    .home-card:nth-child(3) a {
+        margin-left: auto;
+    }
+
     .home-card img {
         max-width: 100%;
     }
+}
+
+@media screen and ( max-width: 600px ) {
+    .home-card a {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* BLOG */
+.blog-card {
+    border: 1px solid rgb(175, 175, 175);
+    margin: 1rem;
+    width: 30rem;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card-container p {
+    margin: .3rem 0
 }

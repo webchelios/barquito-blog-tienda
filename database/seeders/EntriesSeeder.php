@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class EntriesSeeder extends Seeder
 {
@@ -10,9 +11,9 @@ class EntriesSeeder extends Seeder
      */
     public function run(): void
     {
-        \DB::table('entries')->insert([
+        DB::table('entries')->insert([
             [
-                'id' => 1,
+                'entry_id' => 1,
                 'title' => 'Cómo crear un sitio en Laravel',
                 'category' => 'Tutoriales',
                 'content' => 'Hola amigos de youtube como andan? soy su amigo y servidor chelo3p. hoy les voy a enseñar a crear un sitio en laravel',
@@ -21,7 +22,7 @@ class EntriesSeeder extends Seeder
                 'updated_at' => now(),
             ],
             [
-                'id' => 2,
+                'entry_id' => 2,
                 'title' => 'Cómo crear un sitio en Vue',
                 'category' => 'Tutoriales',
                 'content' => 'Hola amigos de youtube como andan? soy su amigo y servidor chelo3p. hoy les voy a enseñar a crear un sitio en Vue',
