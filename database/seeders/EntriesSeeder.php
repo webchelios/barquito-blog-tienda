@@ -30,6 +30,15 @@ class EntriesSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+            [
+                'entry_id' => 3,
+                'title' => 'Cómo posicionar con CSS grid',
+                'category' => 'Css',
+                'content' => 'Hola hoy le preguntaremos a deepseek como se posiciona en esta maleza',
+                'author' => 'chelo3p',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }
