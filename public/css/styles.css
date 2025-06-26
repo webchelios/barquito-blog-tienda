@@ -550,4 +550,45 @@ footer {
         width: 100%;
         text-align: center;
     }
+
+    .profile-container {
+        justify-content: center;
+    }
+}
+
+/* CREAR ENTRADA BLOG POST */ 
+
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+}
+
+.blog-form div {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+}
+
+.blog-form label {
+    margin-bottom: .2rem;
+    color: rgb(80, 80, 80);
+}
+
+.blog-form input {
+    border-radius: .5rem;
+    border: 1px solid black;
+    padding: .6rem .4rem;
+}
+
+.blog-form textarea {
+    border: 1px solid black;
+    border-radius: .5rem;
 }

@@ -11,6 +11,7 @@ class EntriesSeeder extends Seeder
      */
     public function run(): void
     {
+        // query builder:
         DB::table('entries')->insert([
             [
                 'entry_id' => 1,
