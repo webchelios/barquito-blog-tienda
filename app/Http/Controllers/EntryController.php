@@ -34,6 +34,21 @@ class EntryController extends Controller
 
     // recibir datos del form por POST => usar clase Request como argumento tipado
     public function createProcess(Request $request) {
-        dd($request);
+        // Validación de datos y sus respectivos mensajes de error
+        $request->validate(Entry::$rules, Entry::$messages);
+
+        // dd($request);
+        // Primero capturamos los datos del form a traves de la clase Request
+        // Una forma de pedirle la data es con request->input()
+        // Nos devolverá todos los datos hasta el token ( con ->exept(['_token']) puedo omitirlo )
+        // O con ->only() podemos pedir especificamente lo que queremos
+        $data = $request->only(['title', 'category', 'content', 'author', 'cover']);
+
+        // Para grabar está el método de eloquent create()
+        // !importante: para que esto funciona es necesario configurar la propiedad fillable en el modelo
+        Entry::create($data);
+
+        // Redireccionamiento
+        return redirect('/blog/entradas');
     }
 }

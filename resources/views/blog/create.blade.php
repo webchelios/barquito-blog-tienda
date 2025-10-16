@@ -3,10 +3,17 @@
 @section('title', 'Crear una nueva entrada')
 
 @section('main-content')
-<h1>Publicar una nueva entrada</h1>
+
 <div>
     <a href="{{ url('blog/entradas') }}">Blog</a> / <a>Crear una nueva entrada</a>
 </div>
+
+<h1>Publicar una nueva entrada</h1>
+
+@if ($errors->any())
+    <div style="color:red;">Hay errores</div>
+@endif
+
 <div class="form-container">
     <div>Previsualización de la portada</div>
     <form class="blog-form" action="{{ url('/blog/entradas/nueva') }}" method="post">
@@ -16,23 +23,57 @@
         @csrf
         <div>
             <label for="title">Titulo</label>
-            <input type="text" id="title" name="title">
+            <input
+                type="text"
+                id="title"
+                name="title"
+            >
+            @error('title')
+                <p style="color:red;">{{$message}}</p>
+            @enderror
         </div>
         <div>
             <label for="content">Contenido</label>
-            <textarea id="content" name="content"></textarea>
+            <textarea
+                id="content"
+                name="content"
+            ></textarea>
+            @error('content')
+                <p style="color:red;">{{$message}}</p>
+            @enderror
         </div>
         <div>
             <label for="category">Categoría</label>
-            <input type="text" id="category" name="category">
+            <input
+                type="text"
+                id="category"
+                name="category"
+            >
+            @error('category')
+                <p style="color:red;">{{$message}}</p>
+            @enderror
         </div>
         <div>
             <label for="author">Autor</label>
-            <input type="text" id="author" name="author">
+            <input
+                type="text"
+                id="author"
+                name="author"
+            >
+            @error('author')
+                <p style="color:red;">{{$message}}</p>
+            @enderror
         </div>
         <div>
             <label for="cover">Portada</label>
-            <input type="text" id="cover" name="cover">
+            <input
+                type="text"
+                id="cover"
+                name="cover"
+            >
+            @error('cover')
+                <p style="color:red;">{{$message}}</p>
+            @enderror
         </div>
         <button type="submit">Crear</button>
     </form>
