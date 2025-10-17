@@ -11,7 +11,7 @@
 <h1>Publicar una nueva entrada</h1>
 
 @if ($errors->any())
-    <div style="color:red;">Hay errores</div>
+    <div style="color:red;">Hay errores que revisar.</div>
 @endif
 
 <div class="form-container">
@@ -27,9 +27,15 @@
                 type="text"
                 id="title"
                 name="title"
+                class="@error('title') is-invalid @enderror"
+                value="{{ old('title') }}"
+                @error('title')
+                aria-describedby="error-title"
+                aria-invalid=true
+                @enderror
             >
             @error('title')
-                <p style="color:red;">{{$message}}</p>
+                <p style="color:red;" id="error-title">{{$message}}</p>
             @enderror
         </div>
         <div>
@@ -37,9 +43,14 @@
             <textarea
                 id="content"
                 name="content"
-            ></textarea>
+                class="@error('content') is-invalid @enderror"
+                @error('content')
+                aria-describedby="error-message"
+                aria-invalid=true
+                @enderror
+            >{{ old('content') }}</textarea>
             @error('content')
-                <p style="color:red;">{{$message}}</p>
+                <p style="color:red;" id="error-message">{{$message}}</p>
             @enderror
         </div>
         <div>
@@ -48,9 +59,15 @@
                 type="text"
                 id="category"
                 name="category"
+                class="@error('category') is-invalid @enderror"
+                value="{{ old('category') }}"
+                @error('category')
+                aria-describedby="error-category"
+                aria-invalid=true
+                @enderror
             >
             @error('category')
-                <p style="color:red;">{{$message}}</p>
+                <p style="color:red;" id="error-category">{{$message}}</p>
             @enderror
         </div>
         <div>
@@ -59,9 +76,15 @@
                 type="text"
                 id="author"
                 name="author"
+                class="@error('author') is-invalid @enderror"
+                value="{{ old('author') }}"
+                @error('author')
+                aria-describedby="error-author"
+                aria-invalid=true
+                @enderror
             >
             @error('author')
-                <p style="color:red;">{{$message}}</p>
+                <p style="color:red;" id="error-author">{{$message}}</p>
             @enderror
         </div>
         <div>
@@ -70,9 +93,15 @@
                 type="text"
                 id="cover"
                 name="cover"
+                class="@error('cover') is-invalid @enderror"
+                value="{{ old('cover') }}"
+                @error('cover')
+                aria-describedby="error-cover"
+                aria-invalid=true
+                @enderror
             >
             @error('cover')
-                <p style="color:red;">{{$message}}</p>
+                <p style="color:red;" id="error-cover">{{$message}}</p>
             @enderror
         </div>
         <button type="submit">Crear</button>

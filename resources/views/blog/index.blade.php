@@ -4,6 +4,9 @@
 
 @section('main-content')
 <section class="blog-container">
+    @if (\Session::has('status.message'))
+        <div style="color:green;">{!! \Session::get('status.message') !!}</div>
+    @endif
     <div class="title-container">
         <h1>Explorá nuestro Blog</h1>
         <div>
@@ -43,6 +46,7 @@
                         <p class="category-tag">{{ $entry->category }}</p>
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
+                        <a href={{ url('/blog/entradas/' . $entry->entry_id . '/eliminar') }}>Eliminar</a>
                         <div class="profile-container">
                             <img src="https://roast.dating/images/ben.webp">
                             <div>
@@ -59,3 +63,4 @@
     </div>
 </section>
 @endsection
+

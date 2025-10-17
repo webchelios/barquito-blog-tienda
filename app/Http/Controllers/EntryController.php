@@ -49,6 +49,24 @@ class EntryController extends Controller
         Entry::create($data);
 
         // Redireccionamiento
-        return redirect('/blog/entradas');
+        // ->with() permite flashear una variable a la sesión para que esté disponible en la proxima pantalla
+        return redirect('/blog/entradas')
+            ->with('status.message', 'La entrada <b>"' . e($data['title']) . '"</b>    se publicó con éxito');
+    }
+
+    public function deleteForm(int $id) {
+        return view('blog.delete', [
+            'entry' => Entry::findOrFail($id),
+        ]);
+    }
+
+    public function deleteProcess(int $id) {
+        // Buscamos la entrada y la eliminamos si existe
+        $entry = Entry::findOrFail($id);
+
+        $entry->delete();
+
+        return redirect('/blog/entradas')
+            ->with('status.message', 'La entrada <b>"' . e($entry->title) . '"</b> se eliminó correctamente');
     }
 }
