@@ -12,3 +12,9 @@ php artisan key:generate
 ```
 php artisan migrate --seed
 ```
+
+## Solución a posibles problemas relacionados al cache
+Laravel compila y cache las vistas para mejor rendimiento. A veces no se actualizan automáticamente
+´´´
+php artisan view:clear && php artisan cache:clear && php artisan config:clear
+´´´

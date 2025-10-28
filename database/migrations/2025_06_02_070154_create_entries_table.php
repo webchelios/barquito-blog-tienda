@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('category', 100);
             $table->text('content');
             $table->string('author', 100);
-            $table->string('cover', 100)->nullable();
         });
     }
 

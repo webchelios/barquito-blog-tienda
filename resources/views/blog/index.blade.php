@@ -47,6 +47,7 @@
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
                         <a href={{ url('/blog/entradas/' . $entry->entry_id . '/eliminar') }}>Eliminar</a>
+                        <a href={{ url('/blog/entradas/' . $entry->entry_id . '/editar') }}>Editar</a>
                         <div class="profile-container">
                             <img src="https://roast.dating/images/ben.webp">
                             <div>

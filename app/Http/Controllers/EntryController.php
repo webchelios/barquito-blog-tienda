@@ -54,6 +54,23 @@ class EntryController extends Controller
             ->with('status.message', 'La entrada <b>"' . e($data['title']) . '"</b>    se publicó con éxito');
     }
 
+    public function editForm(int $id) {
+        return view('blog.edit', [
+            'entry' => Entry::findOrFail($id),
+        ]);
+    }
+
+    public function editProcess(int $id, Request $request) {
+        $entry = Entry::findOrFail($id);
+
+        $request->validate(Entry::$rules, Entry::$messages);
+
+        $entry->update($request->except('_token'));
+
+        return redirect('/blog/entradas')
+          ->with('status.message', 'La entrada <b>"' . e($entry['title']) . '"</b> se editó con éxito');
+    }
+
     public function deleteForm(int $id) {
         return view('blog.delete', [
             'entry' => Entry::findOrFail($id),
