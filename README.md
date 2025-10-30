@@ -18,3 +18,8 @@ Laravel compila y cache las vistas para mejor rendimiento. A veces no se actuali
 ´´´
 php artisan view:clear && php artisan cache:clear && php artisan config:clear
 ´´´
+
+## Borrar public/storage
+´´´
+php artisan storage:link
+´´´

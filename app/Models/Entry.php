@@ -14,7 +14,7 @@ class Entry extends Model
     protected $primaryKey = "entry_id";
 
     // Datos que permito grabar masivamente
-    protected $fillable = ['title', 'category', 'content', 'author', 'cover'];
+    protected $fillable = ['title', 'category', 'content', 'author', 'cover', 'cover_description'];
 
     public static $rules = [
         'title' => 'required|min:2',

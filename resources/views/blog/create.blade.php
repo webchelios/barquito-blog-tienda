@@ -16,7 +16,7 @@
 
 <div class="form-container">
     <div>Previsualización de la portada</div>
-    <form class="blog-form" action="{{ url('/blog/entradas/nueva') }}" method="post">
+    <form class="blog-form" action="{{ url('/blog/entradas/nueva') }}" method="post" enctype="multipart/form-data">
         <!--
             Token csrf (cross-site request forgeries) es requerido por laravel
         -->
@@ -90,7 +90,7 @@
         <div>
             <label for="cover">Portada</label>
             <input
-                type="text"
+                type="file"
                 id="cover"
                 name="cover"
                 class="@error('cover') is-invalid @enderror"
@@ -102,6 +102,23 @@
             >
             @error('cover')
                 <p style="color:red;" id="error-cover">{{$message}}</p>
+            @enderror
+        </div>
+        <div>
+            <label for="cover-description">Descripción de la portada</label>
+            <input
+                type="text"
+                id="cover-description"
+                name="cover-description"
+                class="@error('cover-description') is-invalid @enderror"
+                value="{{ old('cover-description') }}"
+                @error('cover-description')
+                aria-describedby="error-cover-description"
+                aria-invalid=true
+                @enderror
+            >
+            @error('cover-description')
+                <p style="color:red;" id="error-cover-description">{{$message}}</p>
             @enderror
         </div>
         <button type="submit">Crear</button>

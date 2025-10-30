@@ -42,7 +42,15 @@ class EntryController extends Controller
         // Una forma de pedirle la data es con request->input()
         // Nos devolverá todos los datos hasta el token ( con ->exept(['_token']) puedo omitirlo )
         // O con ->only() podemos pedir especificamente lo que queremos
-        $data = $request->only(['title', 'category', 'content', 'author', 'cover']);
+        $data = $request->only(['title', 'category', 'content', 'author', 'cover', 'cover_description']);
+
+
+        // Antes de grabar preguntamos si hay una imagen que subir
+        if ($request->hasFile('cover')) {
+            // Usamos el disco public del storage (.env y config/filesystems.php)
+            // Lo va a guardar en el directorio covers
+            $data['cover'] = $request->file('cover')->store('covers');
+        }
 
         // Para grabar está el método de eloquent create()
         // !importante: para que esto funciona es necesario configurar la propiedad fillable en el modelo
