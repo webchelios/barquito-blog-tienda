@@ -54,21 +54,24 @@
             @enderror
         </div>
         <div>
-            <label for="category">Categoría</label>
-            <input
-                type="text"
-                id="category"
-                name="category"
-                class="@error('category') is-invalid @enderror"
-                value="{{ old('category') }}"
-                @error('category')
-                aria-describedby="error-category"
-                aria-invalid=true
-                @enderror
-            >
-            @error('category')
-                <p style="color:red;" id="error-category">{{$message}}</p>
+           <label for="category_id">Categoría</label>
+           <select
+            name="category_id"
+            id="category_id"
+            @error('category_id')
+            aria-describedby="error-category_id"
+            aria-invalid=true
             @enderror
+           >
+                @foreach ($categories as $category)
+                    <option
+                        value="{{ $category->category_id }}"
+                        @selected(old('category_id', $categories->category_id) == $category->category_id)
+                    >
+                        {{ $category->name }} | {{ $category->amount }}
+                    </option>
+                @endforeach
+            </select>
         </div>
         <div>
             <label for="author">Autor</label>
@@ -105,19 +108,19 @@
             @enderror
         </div>
         <div>
-            <label for="cover-description">Descripción de la portada</label>
+            <label for="cover_description">Descripción de la portada</label>
             <input
                 type="text"
-                id="cover-description"
-                name="cover-description"
-                class="@error('cover-description') is-invalid @enderror"
-                value="{{ old('cover-description') }}"
-                @error('cover-description')
-                aria-describedby="error-cover-description"
+                id="cover_description"
+                name="cover_description"
+                class="@error('cover_description') is-invalid @enderror"
+                value="{{ old('cover_description') }}"
+                @error('cover_description')
+                aria-describedby="error-cover_description"
                 aria-invalid=true
                 @enderror
             >
-            @error('cover-description')
+            @error('cover_description')
                 <p style="color:red;" id="error-cover-description">{{$message}}</p>
             @enderror
         </div>

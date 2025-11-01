@@ -10,7 +10,7 @@ php artisan migrate
 php artisan key:generate
 ```
 ```
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 
 ## Solución a posibles problemas relacionados al cache

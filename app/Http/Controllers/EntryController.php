@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Entry;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class EntryController extends Controller
@@ -10,7 +11,12 @@ class EntryController extends Controller
     public function index() {
         // traer entradas de la tabla sql. Retorna una Collection (array con los registros de la tabla convertidos a objetos del modelo)
         // (se puede poner en el retorno si es lo único que traigo)
-        $entries = Entry::all();
+        // $entries = Entry::all();
+        // !! ya no se debe utilizar el metodo all debido a que agregamos la tabla categories relacionada con entries
+        // Lo que hacemos es para evitar eager-loading con with
+        // "traeme todas las peliculas con el category y ejecuta el query"
+        // Trae categorias con ID en uso
+        $entries = Entry::with('category')->get();
 
         // pasaje de variables a la vista
         // el segundo parametro es $data
@@ -29,7 +35,9 @@ class EntryController extends Controller
     }
 
     public function createForm() {
-        return view('blog.create');
+        return view('blog.create', [
+            'categories' => Category::all(),
+        ]);
     }
 
     // recibir datos del form por POST => usar clase Request como argumento tipado
@@ -42,7 +50,7 @@ class EntryController extends Controller
         // Una forma de pedirle la data es con request->input()
         // Nos devolverá todos los datos hasta el token ( con ->exept(['_token']) puedo omitirlo )
         // O con ->only() podemos pedir especificamente lo que queremos
-        $data = $request->only(['title', 'category', 'content', 'author', 'cover', 'cover_description']);
+        $data = $request->only(['title', 'category_id', 'content', 'author', 'cover', 'cover_description']);
 
 
         // Antes de grabar preguntamos si hay una imagen que subir

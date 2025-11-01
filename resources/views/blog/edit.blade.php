@@ -57,22 +57,25 @@
                 <p style="color:red;" id="error-message">{{$message}}</p>
             @enderror
         </div>
-        <div>
-            <label for="category">Categoría</label>
-            <input
-                type="text"
-                id="category"
-                name="category"
-                class="@error('category') is-invalid @enderror"
-                value="{{ old('category', $entry->category) }}"
-                @error('category')
-                aria-describedby="error-category"
-                aria-invalid=true
-                @enderror
-            >
-            @error('category')
-                <p style="color:red;" id="error-category">{{$message}}</p>
+       <div>
+           <label for="category_id">Categoría</label>
+           <select
+            name="category_id"
+            id="category_id"
+            @error('category_id')
+            aria-describedby="error-category_id"
+            aria-invalid=true
             @enderror
+           >
+                @foreach ($categories as $category)
+                    <option
+                        value="{{ $category->category_id }}"
+                        @selected(old('category_id', $categories->category_id) == $category->category_id)
+                    >
+                        {{ $category->name }} | {{ $category->amount }}
+                    </option>
+                @endforeach
+            </select>
         </div>
         <div>
             <label for="author">Autor</label>

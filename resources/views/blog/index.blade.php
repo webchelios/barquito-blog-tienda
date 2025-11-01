@@ -43,7 +43,7 @@
                         <img class="img-temp" src="https://img.freepik.com/vector-gratis/papel-pintado-ondulado-grafico-oscuro_23-2148388258.jpg?semt=ais_hybrid&w=740">
                     </div>
                     <div>
-                        <p class="category-tag">{{ $entry->category }}</p>
+                        <p class="category-tag">{{ $entry->category->name }}</p>
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
                         <a href={{ url('/blog/entradas/' . $entry->entry_id . '/eliminar') }}>Eliminar</a>
