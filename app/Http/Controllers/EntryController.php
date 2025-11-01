@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Entry;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class EntryController extends Controller
 {
@@ -98,6 +100,12 @@ class EntryController extends Controller
         $entry = Entry::findOrFail($id);
 
         $entry->delete();
+
+        // Borro el cover si es que existe
+        // disk => env
+        if ($entry->cover && Storage::has($entry->cover)) {
+            Storage::delete($entry->cover);
+        }
 
         return redirect('/blog/entradas')
             ->with('status.message', 'La entrada <b>"' . e($entry->title) . '"</b> se eliminó correctamente');

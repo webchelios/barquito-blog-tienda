@@ -18,6 +18,17 @@
             <li><a href="{{ url('/blog/entradas') }}" class="navbar-item">Blog</a></li>
             <li><a href="{{ url('/quienes-somos') }}" class="navbar-item">Quienes somos</a></li>
             <li><a href="{{ url('/admin') }}" class="navbar-item">Administrar</a></li>
+            
+            @auth
+            <li>
+                <form action="{{ url('/cerrar-sesion') }}" method="post" class="navbar-item">
+                    @csrf 
+                    <button type="submit">Cerrar sesión</button>
+                </form>
+            </li>
+            @else
+            <li><a href="{{ url('/iniciar-sesion') }}" class="navbar-item">Iniciar sesión</a></li>
+            @endif
         </ul>
 
         <div class="menu-toggle">
