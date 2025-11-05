@@ -5,7 +5,7 @@
 @section('main-content')
 
 <div>
-    <a href="{{ url('blog/entradas') }}">Blog</a> / <a>Crear una nueva entrada</a>
+    <a href="{{ route('entries.index') }}">Blog</a> / <a>Crear una nueva entrada</a>
 </div>
 
 <h1>Publicar una nueva entrada</h1>
@@ -16,7 +16,7 @@
 
 <div class="form-container">
     <div>Previsualización de la portada</div>
-    <form class="blog-form" action="{{ url('/blog/entradas/nueva') }}" method="post" enctype="multipart/form-data">
+    <form class="blog-form" action="{{ route('entries.create.process') }}" method="post" enctype="multipart/form-data">
         <!--
             Token csrf (cross-site request forgeries) es requerido por laravel
         -->
@@ -66,7 +66,7 @@
                 @foreach ($categories as $category)
                     <option
                         value="{{ $category->category_id }}"
-                        @selected(old('category_id', $categories->category_id) == $category->category_id)
+                        @selected(old('category_id') == $category->category_id)
                     >
                         {{ $category->name }} | {{ $category->amount }}
                     </option>

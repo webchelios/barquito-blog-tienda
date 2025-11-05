@@ -8,7 +8,7 @@
 </head>
 <body>
     <nav>
-        <a href="{{ url('/') }}">Volver a Barquito</a>
+        <a href="{{ route('home') }}">Volver a Barquito</a>
     </nav>
     <main>
 

@@ -9,7 +9,7 @@
 @section('main-content')
 
 <div>
-    <a href="{{ url('blog/entradas') }}">Blog</a> / <a href="{{ url('blog/entradas/' . $entry->entry_id) }}">{{ $entry->title }}</a> / <a>Editar entrada</a>
+    <a href="{{ route('entries.index') }}">Blog</a> / <a href="{{ route('entries.view', ['id' => $entry->entry_id]) }}">{{ $entry->title }}</a> / <a>Editar entrada</a>
 </div>
 
 <h1>Editar entrada</h1>
@@ -20,7 +20,7 @@
 
 <div class="form-container">
     <div>Previsualización de la portada</div>
-    <form class="blog-form" action="{{ url('/blog/entradas/' . $entry->entry_id . '/editar') }}" method="post">
+    <form class="blog-form" action="{{ route('entries.edit.process', ['id' => $entry->entry_id]) }}" method="post">
         <!--
             Token csrf (cross-site request forgeries) es requerido por laravel
         -->
@@ -70,7 +70,7 @@
                 @foreach ($categories as $category)
                     <option
                         value="{{ $category->category_id }}"
-                        @selected(old('category_id', $categories->category_id) == $category->category_id)
+                        @selected(old('category_id', $entry->category_id) == $category->category_id)
                     >
                         {{ $category->name }} | {{ $category->amount }}
                     </option>

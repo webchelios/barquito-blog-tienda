@@ -4,11 +4,11 @@
 
 @section('main-content')
 <h1>Ingresar a mi cuenta</h1>
-<form action="{{ url('/iniciar-sesion') }}" method="post">
+<form action="{{ route('auth.login.form') }}" method="post">
     @csrf
     <div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" autocomplete="off"/>
+        <input type="email" id="email" name="email" />
     </div>
     <div>
         <label for="password">Contraseña</label>

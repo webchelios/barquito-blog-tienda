@@ -3,7 +3,7 @@
 @section('title', $entry->title)
 
 @section('main-content')
-<div><a href="{{ url('/blog/entradas') }}">Blog</a> / {{ $entry->title }}</div>
+<div><a href="{{ route('entries.index') }}">Blog</a> / {{ $entry->title }}</div>
 <article class="blog-container">
     <h1>{{ $entry->title }}</h1>
     <p>{{ $entry->content }}</p>

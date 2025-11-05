@@ -68,13 +68,15 @@ class EntryController extends Controller
 
         // Redireccionamiento
         // ->with() permite flashear una variable a la sesión para que esté disponible en la proxima pantalla
-        return redirect('/blog/entradas')
+        return redirect()
+            ->route('entries.index')
             ->with('status.message', 'La entrada <b>"' . e($data['title']) . '"</b>    se publicó con éxito');
     }
 
     public function editForm(int $id) {
         return view('blog.edit', [
             'entry' => Entry::findOrFail($id),
+            'categories' => Category::all(),
         ]);
     }
 
@@ -85,7 +87,8 @@ class EntryController extends Controller
 
         $entry->update($request->except('_token'));
 
-        return redirect('/blog/entradas')
+        return redirect()
+          ->route('entries.index')
           ->with('status.message', 'La entrada <b>"' . e($entry['title']) . '"</b> se editó con éxito');
     }
 
@@ -107,7 +110,8 @@ class EntryController extends Controller
             Storage::delete($entry->cover);
         }
 
-        return redirect('/blog/entradas')
+        return redirect()
+            ->route('entries.index')
             ->with('status.message', 'La entrada <b>"' . e($entry->title) . '"</b> se eliminó correctamente');
     }
 }

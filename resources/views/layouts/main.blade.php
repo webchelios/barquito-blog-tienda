@@ -9,25 +9,25 @@
 <body>
     <nav class="navbar">
 
-        <a href="{{ url('/') }}" class="logo">
+        <a href="{{ route('home') }}" class="logo">
             <img src="{{ url('img/icons/logo.svg') }}" alt="logo de barquito tienda y blog" width="300px">
         </a>
 
         <ul class="navbar-list">
-            <li><a href="{{ url('/') }}" class="navbar-item">Inicio</a></li>
-            <li><a href="{{ url('/blog/entradas') }}" class="navbar-item">Blog</a></li>
-            <li><a href="{{ url('/quienes-somos') }}" class="navbar-item">Quienes somos</a></li>
+            <li><a href="{{ route('home') }}" class="navbar-item">Inicio</a></li>
+            <li><a href="{{ route('entries.index') }}" class="navbar-item">Blog</a></li>
+            <li><a href="{{ route('about') }}" class="navbar-item">Quienes somos</a></li>
             <li><a href="{{ url('/admin') }}" class="navbar-item">Administrar</a></li>
             
             @auth
             <li>
-                <form action="{{ url('/cerrar-sesion') }}" method="post" class="navbar-item">
+                <form action="{{ route('auth.logout.process') }}" method="post" class="navbar-item">
                     @csrf 
                     <button type="submit">Cerrar sesión</button>
                 </form>
             </li>
             @else
-            <li><a href="{{ url('/iniciar-sesion') }}" class="navbar-item">Iniciar sesión</a></li>
+            <li><a href="{{ route('auth.login.form') }}" class="navbar-item">Iniciar sesión</a></li>
             @endif
         </ul>
 

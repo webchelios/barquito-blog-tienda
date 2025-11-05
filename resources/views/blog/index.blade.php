@@ -11,7 +11,7 @@
         <h1>Explorá nuestro Blog</h1>
         <div>
             <a
-                href="{{ url('/blog/entradas/nueva') }}"
+                href="{{ route('entries.create.form') }}"
                 class=""
             >Crear una entrada</a>
         </div>
@@ -35,7 +35,7 @@
     
             @foreach ( $entries as $entry )
             <a
-                href="{{ url('/blog/entradas/' . $entry->entry_id) }}"
+                href="{{ route('entries.view', ["id" => $entry->entry_id ]) }}"
                 class="blog-link"
             >
                 <article class="blog-card"> 
@@ -46,8 +46,8 @@
                         <p class="category-tag">{{ $entry->category->name }}</p>
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
-                        <a href={{ url('/blog/entradas/' . $entry->entry_id . '/eliminar') }}>Eliminar</a>
-                        <a href={{ url('/blog/entradas/' . $entry->entry_id . '/editar') }}>Editar</a>
+                        <a href="{{ route('entries.delete.form', $entry->entry_id) }}">Eliminar</a>
+                        <a href="{{ route('entries.edit.form', $entry->entry_id) }}">Editar</a>
                         <div class="profile-container">
                             <img src="https://roast.dating/images/ben.webp">
                             <div>

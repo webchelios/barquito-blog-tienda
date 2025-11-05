@@ -19,11 +19,15 @@ class AuthController extends Controller
         $credentials = $request->only(['email', 'password']);
         
         if (!Auth::attempt($credentials)) {
-            return redirect('/iniciar-sesion')
-                ->with('success', 'Las credenciales ingresadas no coinciden con los registros.');
+            return redirect()
+                ->route('auth.login.form')
+                ->with('error', 'Las credenciales ingresadas no coinciden con los registros.')
+                // alternativa forzada a old()
+                ->withInput();
         }
 
-        return redirect('/blog/entradas')
+        return redirect()
+            ->route('entries.index')
             ->with('success', 'Sesión iniciada con éxito. Hola de nuevo ' . auth()->user()->email);
     }
 
@@ -33,7 +37,8 @@ class AuthController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/iniciar-sesion')
-            ->with('message', 'La sesión se cerró con éxito.');
+        return redirect()
+            ->route('auth.login.form')
+            ->with('sucess', 'La sesión se cerró con éxito.');
     }
 }

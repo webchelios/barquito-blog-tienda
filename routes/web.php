@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+// Los $middlewareAliases en kernel.php NO FUNCIONAN en mi proyecto, en la documentación hace un paso previo
+// a usar el alias trayendo Authenticate
+use App\Http\Middleware\Authenticate;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,31 +19,46 @@ use Illuminate\Support\Facades\Route;
 // controllers como métodos de rutas
 // callable => [ nombre completo "FQN" , Nombre del método del controller ]
 // ( ::class transforma FQN a string y me da autocompletado )
-Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ]);
+Route::get('/', [ \App\Http\Controllers\HomeController::class , 'index' ])
+    ->name('home');
 
-Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'about' ]);
+Route::get('/quienes-somos', [ \App\Http\Controllers\HomeController::class , 'about' ])
+    ->name('about');
 
 // Autenticación
-Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'loginForm']);
-Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'loginProcess']);
-Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'logoutProcess']);
+Route::get('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'loginForm'])
+    ->name('auth.login.form');
+Route::post('/iniciar-sesion', [\App\Http\Controllers\AuthController::class, 'loginProcess'])
+    ->name('auth.login.process');
+Route::post('/cerrar-sesion', [\App\Http\Controllers\AuthController::class, 'logoutProcess'])
+    ->name('auth.logout.process');
 
-Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'index' ]);
-Route::get('/blog/entradas/{id}', [ \App\Http\Controllers\EntryController::class , 'view' ])->whereNumber('id');
+Route::get('/blog/entradas', [ \App\Http\Controllers\EntryController::class , 'index' ])
+    ->name('entries.index');
+Route::get('/blog/entradas/{id}', [ \App\Http\Controllers\EntryController::class , 'view' ])
+    ->whereNumber('id')
+    ->name('entries.view');
+
 Route::get('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createForm' ])
-    ->middleware(['auth']);
+    ->middleware(Authenticate::class)
+    ->name('entries.create.form');
 Route::post('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createProcess' ])
-    ->middleware(['auth']);
+    ->middleware(Authenticate::class)
+    ->name('entries.create.process');
 
 Route::get('/blog/entradas/{id}/eliminar', [ \App\Http\Controllers\EntryController::class, 'deleteForm' ])
-    ->middleware(['auth']);;
+    ->middleware(Authenticate::class)
+    ->name('entries.delete.form');
 Route::post('/blog/entradas/{id}/eliminar', [ \App\Http\Controllers\EntryController::class, 'deleteProcess' ])
-    ->middleware(['auth']);;
+    ->middleware(Authenticate::class)
+    ->name('entries.delete.process');
 
 Route::get('/blog/entradas/{id}/editar', [ \App\Http\Controllers\EntryController::class, 'editForm' ])
-    ->middleware(['auth']);;
+    ->middleware(Authenticate::class)
+    ->name('entries.edit.form');
 Route::post('/blog/entradas/{id}/editar', [ \App\Http\Controllers\EntryController::class, 'editProcess' ])
-    ->middleware(['auth']);;
+    ->middleware(Authenticate::class)
+    ->name('entries.edit.process');
 
 Route::get('/admin', function() {
     return view('admin.index');
