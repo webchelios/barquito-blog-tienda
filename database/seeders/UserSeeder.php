@@ -21,7 +21,7 @@ class UserSeeder extends Seeder
                 'id' => 1,
                 'name' => 'Gamma Jack',
                 'email' => 'gamma@jack.com',
-                'password' => Hash::make('1234'),
+                'password' => Hash::make('1234'), // equivalente a password_hash()
                 'created_at' => now(),
                 'updated_at' => now(),
             ]

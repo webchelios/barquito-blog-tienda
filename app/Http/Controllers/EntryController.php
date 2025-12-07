@@ -85,7 +85,19 @@ class EntryController extends Controller
 
         $request->validate(Entry::$rules, Entry::$messages);
 
-        $entry->update($request->except('_token'));
+        $data = $request->except('_token');
+        $oldCover = null;
+        
+        if ($request->hasFile('cover')) {
+            $data['cover'] = $request->file('cover')->store('covers');
+            $oldCover = $entry->cover;
+        }
+
+        $entry->update($data);
+
+        if ($oldCover && Storage::has($oldCover)) {
+            Storage::delete($oldCover);
+        }
 
         return redirect()
           ->route('entries.index')

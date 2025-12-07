@@ -20,7 +20,7 @@
 
 <div class="form-container">
     <div>Previsualización de la portada</div>
-    <form class="blog-form" action="{{ route('entries.edit.process', ['id' => $entry->entry_id]) }}" method="post">
+    <form class="blog-form" action="{{ route('entries.edit.process', ['id' => $entry->entry_id]) }}" method="post" enctype="multipart/form-data">
         <!--
             Token csrf (cross-site request forgeries) es requerido por laravel
         -->
@@ -95,17 +95,20 @@
             @enderror
         </div>
         <div>
+            <div>Portada actual</div>
+            @if ($entry->cover && Storage::has($entry->cover))
+                <img src="{{ url('storage/' . $entry->cover) }}" alt="">
+            @else
+                <p>Imagen de que no hay portada</p>
+            @endif
+        </div>
+        <div>
             <label for="cover">Portada</label>
             <input
-                type="text"
+                type="file"
                 id="cover"
                 name="cover"
                 class="@error('cover') is-invalid @enderror"
-                value="{{ old('cover', $entry->cover) }}"
-                @error('cover')
-                aria-describedby="error-cover"
-                aria-invalid=true
-                @enderror
             >
             @error('cover')
                 <p style="color:red;" id="error-cover">{{$message}}</p>

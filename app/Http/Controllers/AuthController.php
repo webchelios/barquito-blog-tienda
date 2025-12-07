@@ -12,7 +12,7 @@ class AuthController extends Controller
     }
     
     public function loginProcess(Request $request) {
-        // Validar
+        // TODO: validate
 
         // Autenticar con fachada Auth
         // attempt requiere password y credenciales
@@ -28,13 +28,15 @@ class AuthController extends Controller
 
         return redirect()
             ->route('entries.index')
-            ->with('success', 'Sesión iniciada con éxito. Hola de nuevo ' . auth()->user()->email);
+            ->with('success', 'Sesión iniciada con éxito. Hola de nuevo ' . Auth::user()->email);
     }
 
     public function logoutProcess(Request $request) {
         Auth::logout();
 
+        // Borrar data de la sesión y generar un id nuevo
         $request->session()->invalidate();
+        // Regenerar token de csrf
         $request->session()->regenerateToken();
 
         return redirect()

@@ -9,18 +9,17 @@ menuBtn.addEventListener('click', () => {
 const path = window.location.pathname
 const currentPath = path.split('/').at(-1)
 const menuItems = document.querySelectorAll('.navbar-item')
-    switch (currentPath) {
-        case '':
-            menuItems[0].classList.add('navbar-item-active')
-            break;
-        case 'entradas':
-            menuItems[1].classList.add('navbar-item-active')
-            break;
-        case 'quienes-somos':
-            menuItems[2].classList.add('navbar-item-active')
-            break;
-        default:
-            break;
-    }
+switch (currentPath) {
+    case '':
+        menuItems[0].classList.add('navbar-item-active')
+        break;
+    case 'entradas':
+        menuItems[1].classList.add('navbar-item-active')
+        break;
+    case 'quienes-somos':
+        menuItems[2].classList.add('navbar-item-active')
+        break;
+    default:
+        break;
+}
 
-        

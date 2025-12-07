@@ -16,7 +16,7 @@ class EntriesSeeder extends Seeder
             [
                 'entry_id' => 1,
                 'title' => 'Cómo crear un sitio en Laravel',
-                'content' => 'Hola amigos de youtube como andan? soy su amigo y servidor chelo3p. hoy les voy a enseñar a crear un sitio en laravel',
+                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos un sitio en laravel',
                 'author' => 'chelo3p',
                 'category_id' => 1,
                 'created_at' => now(),
@@ -25,7 +25,7 @@ class EntriesSeeder extends Seeder
             [
                 'entry_id' => 2,
                 'title' => 'Cómo crear un sitio en Vue',
-                'content' => 'Hola amigos de youtube como andan? soy su amigo y servidor chelo3p. hoy les voy a enseñar a crear un sitio en Vue',
+                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos un sitio en vue',
                 'author' => 'chelo3p',
                 'category_id' => 2,
                 'created_at' => now(),
@@ -34,7 +34,7 @@ class EntriesSeeder extends Seeder
             [
                 'entry_id' => 3,
                 'title' => 'Cómo posicionar con CSS grid',
-                'content' => 'Hola hoy le preguntaremos a deepseek como se posiciona en esta maleza',
+                'content' => 'Hola hoy le preguntaremos a deepseek como se posiciona en grid',
                 'author' => 'chelo3p',
                 'category_id' => 3,
                 'created_at' => now(),

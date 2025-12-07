@@ -40,23 +40,29 @@ Route::get('/blog/entradas/{id}', [ \App\Http\Controllers\EntryController::class
     ->name('entries.view');
 
 Route::get('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createForm' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.create.form');
 Route::post('/blog/entradas/nueva', [ \App\Http\Controllers\EntryController::class , 'createProcess' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.create.process');
 
 Route::get('/blog/entradas/{id}/eliminar', [ \App\Http\Controllers\EntryController::class, 'deleteForm' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.delete.form');
 Route::post('/blog/entradas/{id}/eliminar', [ \App\Http\Controllers\EntryController::class, 'deleteProcess' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.delete.process');
 
 Route::get('/blog/entradas/{id}/editar', [ \App\Http\Controllers\EntryController::class, 'editForm' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.edit.form');
 Route::post('/blog/entradas/{id}/editar', [ \App\Http\Controllers\EntryController::class, 'editProcess' ])
+    ->whereNumber('id')
     ->middleware(Authenticate::class)
     ->name('entries.edit.process');
 

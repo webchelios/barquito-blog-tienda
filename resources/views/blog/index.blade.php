@@ -46,8 +46,10 @@
                         <p class="category-tag">{{ $entry->category->name }}</p>
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
-                        <a href="{{ route('entries.delete.form', $entry->entry_id) }}">Eliminar</a>
-                        <a href="{{ route('entries.edit.form', $entry->entry_id) }}">Editar</a>
+                        @auth
+                            <a href="{{ route('entries.delete.form', $entry->entry_id) }}">Eliminar</a>
+                            <a href="{{ route('entries.edit.form', $entry->entry_id) }}">Editar</a>
+                        @endauth
                         <div class="profile-container">
                             <img src="https://roast.dating/images/ben.webp">
                             <div>
