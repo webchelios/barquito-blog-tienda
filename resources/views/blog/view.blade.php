@@ -7,6 +7,9 @@
 <article class="blog-container">
     <h1>{{ $entry->title }}</h1>
     <p>{{ $entry->content }}</p>
+    @foreach($entry->tags as $tag)
+        <p>{{$tag->name}}</p>
+    @endforeach
     <div>
         @if ($entry->cover !== null)
             <img src="{{ url('storage/' . $entry->cover) }}" alt="{{ $entry->cover_description }}">

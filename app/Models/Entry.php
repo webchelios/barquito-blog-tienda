@@ -3,14 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo; 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Entry extends Model
 {
     // mapeo con Eloquent
     // 1- (opcional) indicar nombre de tabla
     // protected $table = "entries";
-    
+
     // 2- indicar nombre de la clave primaria
     protected $primaryKey = "entry_id";
 
@@ -24,7 +25,7 @@ class Entry extends Model
         'author' => 'required|min:2',
         'cover' => 'min:2',
     ];
-    
+
     public static $messages = [
         'title.required' => 'El título no debe estar vacío',
         'title.min' => 'El título debe tener un mínimo de dos caracteres',
@@ -45,5 +46,15 @@ class Entry extends Model
     public function category(): BelongsTo {
         return $this->belongsTo(Category::class, 'category_id', 'category_id');
     }
-            
+
+    // Relación
+    // BelongsToMany => 1. FQN
+    // 2. table
+    // 3. foreignPivotKey
+    // 4. relatedPivotKey
+    // 5. parentKey
+    // 6. relatedKey
+    public function tags() : BelongsToMany {
+        return $this->BelongsToMany(Tag::class, 'entries_have_tags', 'entry_id', 'tag_id', 'entry_id', 'tag_id');
+    }
 }

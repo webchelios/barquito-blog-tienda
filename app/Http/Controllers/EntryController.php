@@ -18,7 +18,7 @@ class EntryController extends Controller
         // Lo que hacemos es para evitar eager-loading con with
         // "traeme todas las peliculas con el category y ejecuta el query"
         // Trae categorias con ID en uso
-        $entries = Entry::with('category')->get();
+        $entries = Entry::with(['category', 'tags'])->get();
 
         // pasaje de variables a la vista
         // el segundo parametro es $data
@@ -29,7 +29,7 @@ class EntryController extends Controller
 
     // atrapar el id del parámetro asociado a la ruta como parametro de la función
     // (debe llamarse igual al parametro)
-    public function view( int $id ) {       
+    public function view( int $id ) {
         // busca el registro de la tabla por su PK y muestro un 404 si no lo encuentra (en lugar de un null)
         return view('blog.view', [
             'entry' => Entry::findOrFail($id),
@@ -87,7 +87,7 @@ class EntryController extends Controller
 
         $data = $request->except('_token');
         $oldCover = null;
-        
+
         if ($request->hasFile('cover')) {
             $data['cover'] = $request->file('cover')->store('covers');
             $oldCover = $entry->cover;

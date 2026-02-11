@@ -15,9 +15,12 @@ return new class extends Migration
     {
         Schema::create('entries_have_tags', function (Blueprint $table) {
             $table->foreignId('entry_id')->constrained('entries', 'entry_id');
-            
+
             $table->unsignedTinyInteger('tag_id');
             $table->foreign('tag_id')->references('tag_id')->on('tags');
+
+            // Definimos la PH como la combinacion de ambas FKs
+            $table->primary(['entry_id', 'tag_id']);
 
             $table->timestamps();
         });

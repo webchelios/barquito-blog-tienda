@@ -31,14 +31,14 @@
                 <li>Filtro 3</li>
             </ul>
         </div>
-        <div class="card-container"> 
-    
+        <div class="card-container">
+
             @foreach ( $entries as $entry )
             <a
                 href="{{ route('entries.view', ["id" => $entry->entry_id ]) }}"
                 class="blog-link"
             >
-                <article class="blog-card"> 
+                <article class="blog-card">
                     <div>
                         <img class="img-temp" src="https://img.freepik.com/vector-gratis/papel-pintado-ondulado-grafico-oscuro_23-2148388258.jpg?semt=ais_hybrid&w=740">
                     </div>
@@ -46,6 +46,9 @@
                         <p class="category-tag">{{ $entry->category->name }}</p>
                         <h2>{{ $entry->title }}</h2>
                         <p>{{ $entry->content }}</p>
+                        @foreach($entry->tags as $tag)
+                            <p>{{$tag->name}}</p>
+                        @endforeach
                         @auth
                             <a href="{{ route('entries.delete.form', $entry->entry_id) }}">Eliminar</a>
                             <a href="{{ route('entries.edit.form', $entry->entry_id) }}">Editar</a>
@@ -61,7 +64,7 @@
                 </article>
             </a>
             @endforeach
-    
+
         </div>
     </div>
 </section>

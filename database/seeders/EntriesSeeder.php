@@ -15,8 +15,8 @@ class EntriesSeeder extends Seeder
         DB::table('entries')->insert([
             [
                 'entry_id' => 1,
-                'title' => 'Cómo crear un sitio en Laravel',
-                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos un sitio en laravel',
+                'title' => 'Cómo crear una grulla',
+                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos una grulla muy facil',
                 'author' => 'chelo3p',
                 'category_id' => 1,
                 'created_at' => now(),
@@ -24,8 +24,8 @@ class EntriesSeeder extends Seeder
             ],
             [
                 'entry_id' => 2,
-                'title' => 'Cómo crear un sitio en Vue',
-                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos un sitio en vue',
+                'title' => 'Cómo hacer un barquito de papel',
+                'content' => 'Hola bienvenidos a mi tutorial, hoy crearemos un  barquito de papel',
                 'author' => 'chelo3p',
                 'category_id' => 2,
                 'created_at' => now(),
@@ -33,13 +33,46 @@ class EntriesSeeder extends Seeder
             ],
             [
                 'entry_id' => 3,
-                'title' => 'Cómo posicionar con CSS grid',
-                'content' => 'Hola hoy le preguntaremos a deepseek como se posiciona en grid',
+                'title' => 'Como doblar mejor el papel',
+                'content' => 'Hola hoy le preguntaremos a deepseek como se dobla bien un papel',
                 'author' => 'chelo3p',
                 'category_id' => 3,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
+        ]);
+
+        DB::table('entries_have_tags')->insert([
+            [
+                'entry_id' => 1,
+                'tag_id' => 1,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'entry_id' => 1,
+                'tag_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'entry_id' => 2,
+                'tag_id' => 2,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'entry_id' => 2,
+                'tag_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'entry_id' => 3,
+                'tag_id' => 3,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]
         ]);
     }
 }

@@ -10,14 +10,18 @@ class AuthController extends Controller
     public function loginForm() {
         return view('auth.login');
     }
-    
+
     public function loginProcess(Request $request) {
-        // TODO: validate
+
+        $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required', 'string'],
+        ]);
 
         // Autenticar con fachada Auth
         // attempt requiere password y credenciales
         $credentials = $request->only(['email', 'password']);
-        
+
         if (!Auth::attempt($credentials)) {
             return redirect()
                 ->route('auth.login.form')
