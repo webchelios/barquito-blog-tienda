@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Entry;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -39,6 +40,7 @@ class EntryController extends Controller
     public function createForm() {
         return view('blog.create', [
             'categories' => Category::all(),
+            'tags' => Tag::all(),
         ]);
     }
 
@@ -52,8 +54,8 @@ class EntryController extends Controller
         // Una forma de pedirle la data es con request->input()
         // Nos devolverá todos los datos hasta el token ( con ->exept(['_token']) puedo omitirlo )
         // O con ->only() podemos pedir especificamente lo que queremos
-        $data = $request->only(['title', 'category_id', 'content', 'author', 'cover', 'cover_description']);
-
+        // $data = $request->only(['title', 'category_id', 'content', 'author', 'cover', 'cover_description']);
+        $data = $request->except(['_token']);
 
         // Antes de grabar preguntamos si hay una imagen que subir
         if ($request->hasFile('cover')) {
@@ -64,7 +66,10 @@ class EntryController extends Controller
 
         // Para grabar está el método de eloquent create()
         // !importante: para que esto funciona es necesario configurar la propiedad fillable en el modelo
-        Entry::create($data);
+        $entry = Entry::create($data);
+
+        // Asocio los tags a la entrada (tabla pivot)
+        $entry->tags()->attach($request->input('tags', []));
 
         // Redireccionamiento
         // ->with() permite flashear una variable a la sesión para que esté disponible en la proxima pantalla
@@ -113,6 +118,8 @@ class EntryController extends Controller
     public function deleteProcess(int $id) {
         // Buscamos la entrada y la eliminamos si existe
         $entry = Entry::findOrFail($id);
+
+        $entry->tags()->detach();
 
         $entry->delete();
 

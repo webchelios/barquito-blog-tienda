@@ -124,6 +124,16 @@
                 <p style="color:red;" id="error-cover-description">{{$message}}</p>
             @enderror
         </div>
+        <div>
+            <fieldset>Tags</fieldset>
+
+            @foreach ($tags as $tag)
+                <label>
+                    <input type="checkbox" name="tags[]" value="{{ $tag->tag_id }}" @checked(collect(old('tags', []))->contains($tag->tag_id)) />
+                    <span>{{ $tag->name }}</span>
+                </label>
+            @endforeach
+        </div>
         <button type="submit">Crear</button>
     </form>
 </div>
